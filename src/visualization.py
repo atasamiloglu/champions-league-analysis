@@ -61,6 +61,28 @@ def plot_top_attendance_matches(top_matches):
 
     plt.show()
 
+def plot_average_goals_by_season(average_goals):
+    plt.figure(figsize=(8, 5))
+
+    plt.plot(
+        average_goals.index,
+        average_goals.values,
+        marker="o",
+        linewidth=2
+    )
+
+    plt.title("Average Goals per Match by Season")
+    plt.xlabel("Season")
+    plt.ylabel("Average Goals")
+
+    plt.grid(True)
+
+    plt.tight_layout()
+
+    plt.savefig("images/average_goals_by_season.png", dpi=300)
+
+    plt.show()    
+
 
 
     

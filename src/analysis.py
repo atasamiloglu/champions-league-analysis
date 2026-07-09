@@ -49,3 +49,23 @@ def top_attendance_matches(df):
     return top_matches[
         ["HOME_TEAM", "AWAY_TEAM", "STADIUM", "ATTENDANCE"]
     ]
+
+def goals_by_season(df):
+    df["TOTAL_GOALS"] = df["HOME_TEAM_SCORE"] + df["AWAY_TEAM_SCORE"]
+
+    goals = df.groupby("SEASON")["TOTAL_GOALS"].sum()
+
+    return goals
+
+def matches_by_season(df):
+    return df.groupby("SEASON").size()
+
+def average_goals_by_season(df):
+    df["TOTAL_GOALS"] = df["HOME_TEAM_SCORE"] + df["AWAY_TEAM_SCORE"]
+
+    goals = df.groupby("SEASON")["TOTAL_GOALS"].sum()
+    matches = df.groupby("SEASON").size()
+
+    average_goals = goals / matches
+
+    return average_goals
