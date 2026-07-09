@@ -83,6 +83,27 @@ def plot_average_goals_by_season(average_goals):
 
     plt.show()    
 
+def plot_average_attendance_by_season(average_attendance):
+    plt.figure(figsize=(8, 5))
+
+    plt.plot(
+        average_attendance.index,
+        average_attendance.values,
+        marker="o",
+        linewidth=2
+    )
+
+    plt.title("Average Attendance by Season")
+    plt.xlabel("Season")
+    plt.ylabel("Average Attendance")
+
+    plt.grid(True)
+
+    plt.tight_layout()
+
+    plt.savefig("images/average_attendance_by_season.png", dpi=300)
+
+    plt.show()
 
 
     

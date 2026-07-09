@@ -8,13 +8,17 @@ from src.analysis import (
     top_attendance_matches,
     goals_by_season,
     matches_by_season,
-    average_goals_by_season
+    average_goals_by_season,
+    average_attendance_by_season,
+    
 )
 from src.visualization import (
     plot_top_teams,
     plot_home_advantage,
     plot_top_attendance_matches,
-    plot_average_goals_by_season
+    plot_average_goals_by_season,
+    plot_average_attendance_by_season,
+    
 )
 
 
@@ -77,6 +81,13 @@ def main():
     print(average_goals.round(2))
 
     plot_average_goals_by_season(average_goals)
+
+    average_attendance_season = average_attendance_by_season(df)
+
+    print("\nAverage Attendance by Season")
+    print(average_attendance_season.round(1))
+
+    plot_average_attendance_by_season(average_attendance_season)
 
 
 if __name__ == "__main__":

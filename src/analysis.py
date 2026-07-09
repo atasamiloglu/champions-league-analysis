@@ -69,3 +69,8 @@ def average_goals_by_season(df):
     average_goals = goals / matches
 
     return average_goals
+
+def average_attendance_by_season(df):
+    average_attendance = df.groupby("SEASON")["ATTENDANCE"].mean()
+
+    return average_attendance
