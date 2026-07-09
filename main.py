@@ -61,23 +61,43 @@ total_conceded = home_conceded.add(away_conceded, fill_value=0)
 # Büyükten küçüğe sırala
 total_conceded = total_conceded.sort_values(ascending=False)
 
-print(total_conceded.head(10))
+#print(total_conceded.head(10))
+
+home_wins = (df["HOME_TEAM_SCORE"] > df["AWAY_TEAM_SCORE"]).sum()
+draws = (df["HOME_TEAM_SCORE"] == df["AWAY_TEAM_SCORE"]).sum()
+away_wins = (df["HOME_TEAM_SCORE"] < df["AWAY_TEAM_SCORE"]).sum()
+
+print (f"Home wins: {home_wins}")
+print (f"Draws: {draws}")
+print (f"Away wins: {away_wins}")
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(10, 6))
+#plt.figure(figsize=(10, 6))
 
-plt.bar(top_10_teams.index, top_10_teams.values)
+#plt.bar(top_10_teams.index, top_10_teams.values)
 
-plt.title("Top 10 Teams by Total Goals")
-plt.xlabel("Teams")
-plt.ylabel("Goals")
+#plt.title("Top 10 Teams by Total Goals")
+#plt.xlabel("Teams")
+#plt.ylabel("Goals")
 
-plt.xticks(rotation=45)
+#plt.xticks(rotation=45)
 
-plt.tight_layout()
+#plt.tight_layout()
 
-plt.savefig("images/top_10_teams_by_goals.png", dpi=300)
+#plt.savefig("images/top_10_teams_by_goals.png", dpi=300)
 
 # plt.show() 
 
+labels = ['Home Wins', 'Draws', 'Away Wins']
+sizes = [home_wins, draws, away_wins]
+
+plt.figure(figsize=(7, 7))
+
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+
+plt.title("Match Outcomes in UEFA Champions League (2016-2022)")
+
+plt.savefig("images/home_advantage_pie.png", dpi=300)
+
+plt.show()
