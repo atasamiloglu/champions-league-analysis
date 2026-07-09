@@ -1,4 +1,4 @@
-from src.load_data import load_matches
+from src.load_data import load_matches,load_players
 from src.analysis import (
     total_goals,
     top_scoring_teams,
@@ -10,6 +10,11 @@ from src.analysis import (
     matches_by_season,
     average_goals_by_season,
     average_attendance_by_season,
+    average_height,
+    tallest_players,
+    average_height_by_position,
+    
+
     
 )
 from src.visualization import (
@@ -18,6 +23,7 @@ from src.visualization import (
     plot_top_attendance_matches,
     plot_average_goals_by_season,
     plot_average_attendance_by_season,
+    plot_average_height_by_position
     
 )
 
@@ -77,17 +83,42 @@ def main():
 
     average_goals = average_goals_by_season(df)
 
-    print("\nAverage Goals per Match by Season")
-    print(average_goals.round(2))
+    #print("\nAverage Goals per Match by Season")
+    #print(average_goals.round(2))
 
     plot_average_goals_by_season(average_goals)
 
     average_attendance_season = average_attendance_by_season(df)
 
-    print("\nAverage Attendance by Season")
-    print(average_attendance_season.round(1))
+    #print("\nAverage Attendance by Season")
+    #print(average_attendance_season.round(1))
 
     plot_average_attendance_by_season(average_attendance_season)
+
+    players_df = load_players()
+
+    print(players_df["POSITION"].value_counts())
+
+    average_player_height = average_height(players_df)
+
+    #print(f"\nAverage Player Height: {average_player_height:.2f} cm")
+
+    tallest = tallest_players(players_df)
+
+    #print("\nTop 10 Tallest Players")
+    #print(tallest)
+
+    height_by_position = average_height_by_position(players_df)
+
+    #print("\nAverage Height by Position")
+    #print(height_by_position.round(2))
+
+    height_by_position = average_height_by_position(players_df)
+
+    print("\nAverage Height by Position")
+    print(height_by_position)
+
+    plot_average_height_by_position(height_by_position)
 
 
 if __name__ == "__main__":

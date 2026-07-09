@@ -105,6 +105,28 @@ def plot_average_attendance_by_season(average_attendance):
 
     plt.show()
 
+def plot_average_height_by_position(height_by_position):
+    plt.figure(figsize=(8, 5))
+
+    plt.bar(
+        height_by_position.index,
+        height_by_position.values
+    )
+
+    plt.title("Average Height by Position")
+    plt.xlabel("Position")
+    plt.ylabel("Average Height (cm)")
+
+    plt.tight_layout()
+
+    plt.savefig(
+        "images/average_height_by_position.png",
+        dpi=300
+    )
+
+    plt.show()
+
+
 
     
     

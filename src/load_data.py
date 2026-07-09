@@ -6,3 +6,11 @@ def load_matches():
         sheet_name="matches"
     )
     return df
+
+def load_players():
+    df = pd.read_excel(
+        "data/ChampionsLeague/ucl_data.xlsx",
+        sheet_name="players"
+    )
+
+    return df

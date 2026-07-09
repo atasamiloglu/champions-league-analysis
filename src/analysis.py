@@ -74,3 +74,28 @@ def average_attendance_by_season(df):
     average_attendance = df.groupby("SEASON")["ATTENDANCE"].mean()
 
     return average_attendance
+
+def average_height(df):
+    return df["HEIGHT"].mean()
+
+def tallest_players(df):
+    tallest = df.sort_values(
+        by="HEIGHT",
+        ascending=False
+    ).head(10)
+
+    return tallest[
+        ["FIRST_NAME", "LAST_NAME", "TEAM", "POSITION", "HEIGHT"]
+    ]
+
+def average_height_by_position(df):
+    players = df[
+        df["POSITION"].isin([
+            "Goalkeeper",
+            "Defender",
+            "Midfielder",
+            "Forward"
+        ])
+    ]
+
+    return players.groupby("POSITION")["HEIGHT"].mean().sort_values(ascending=False)
