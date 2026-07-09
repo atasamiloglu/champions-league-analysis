@@ -126,6 +126,27 @@ def plot_average_height_by_position(height_by_position):
 
     plt.show()
 
+def plot_average_age_by_position(age_by_position):
+    plt.figure(figsize=(8, 5))
+
+    plt.bar(
+        age_by_position.index,
+        age_by_position.values
+    )
+
+    plt.title("Average Age by Position")
+    plt.xlabel("Position")
+    plt.ylabel("Average Age (Years)")
+
+    plt.tight_layout()
+
+    plt.savefig(
+        "images/average_age_by_position.png",
+        dpi=300
+    )
+
+    plt.show()    
+
 
 
     

@@ -13,6 +13,8 @@ from src.analysis import (
     average_height,
     tallest_players,
     average_height_by_position,
+    average_age,
+    average_age_by_position,
     
 
     
@@ -23,7 +25,8 @@ from src.visualization import (
     plot_top_attendance_matches,
     plot_average_goals_by_season,
     plot_average_attendance_by_season,
-    plot_average_height_by_position
+    plot_average_height_by_position,
+    plot_average_age_by_position,
     
 )
 
@@ -97,8 +100,6 @@ def main():
 
     players_df = load_players()
 
-    print(players_df["POSITION"].value_counts())
-
     average_player_height = average_height(players_df)
 
     #print(f"\nAverage Player Height: {average_player_height:.2f} cm")
@@ -115,10 +116,24 @@ def main():
 
     height_by_position = average_height_by_position(players_df)
 
-    print("\nAverage Height by Position")
-    print(height_by_position)
+    #print("\nAverage Height by Position")
+    #print(height_by_position)
 
     plot_average_height_by_position(height_by_position)
+
+    average_player_age = average_age(players_df)
+
+    #print(f"\nAverage Player Age: {average_player_age:.2f} years")
+
+    print(players_df["DOB"].head())
+
+    age_by_position = average_age_by_position(players_df)
+
+    print("\nAverage Age by Position")
+    print(age_by_position)
+
+    plot_average_age_by_position(age_by_position)
+    
 
 
 if __name__ == "__main__":

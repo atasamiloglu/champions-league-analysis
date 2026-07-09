@@ -99,3 +99,35 @@ def average_height_by_position(df):
     ]
 
     return players.groupby("POSITION")["HEIGHT"].mean().sort_values(ascending=False)
+
+import pandas as pd
+
+def average_age(df):
+    players = df[
+        df["POSITION"].isin([
+            "Goalkeeper",
+            "Defender",
+            "Midfielder",
+            "Forward"
+        ])
+    ].copy()
+
+    players["DOB"] = pd.to_datetime(players["DOB"])
+    players["AGE"] = 2026 - players["DOB"].dt.year
+
+    return players["AGE"].mean()
+
+def average_age_by_position(df):
+    players = df[
+        df["POSITION"].isin([
+            "Goalkeeper",
+            "Defender",
+            "Midfielder",
+            "Forward"
+        ])
+    ].copy()
+
+    players["DOB"] = pd.to_datetime(players["DOB"])
+    players["AGE"] = 2026 - players["DOB"].dt.year
+
+    return players.groupby("POSITION")["AGE"].mean()
