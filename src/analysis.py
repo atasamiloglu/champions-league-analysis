@@ -34,3 +34,18 @@ def home_advantage(df):
     away_wins = (df["HOME_TEAM_SCORE"] < df["AWAY_TEAM_SCORE"]).sum()
 
     return home_wins, draws, away_wins
+
+def average_attendance(df):
+    average_attendance = df["ATTENDANCE"].mean()
+
+    return average_attendance
+
+def top_attendance_matches(df):
+    top_matches = df.sort_values(
+        by="ATTENDANCE",
+        ascending=False
+    ).head(10)
+
+    return top_matches[
+        ["HOME_TEAM", "AWAY_TEAM", "STADIUM", "ATTENDANCE"]
+    ]

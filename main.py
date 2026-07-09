@@ -4,10 +4,14 @@ from src.analysis import (
     top_scoring_teams,
     top_conceded_teams,
     home_advantage,
+    average_attendance,
+    top_attendance_matches,
+    
 )
 from src.visualization import (
     plot_top_teams,
     plot_home_advantage,
+    plot_top_attendance_matches,
 )
 
 
@@ -43,6 +47,18 @@ def main():
 
     # Plot home advantage
     plot_home_advantage(home_wins, draws, away_wins)
+
+    attendance = average_attendance(df)
+
+    print(f"\nAverage Attendance: {attendance:.2f}")
+
+    top_matches = top_attendance_matches(df)
+    print("\nTop 10 Matches by Attendance")
+    print(top_matches)
+
+    plot_top_attendance_matches(top_matches)
+
+    
 
 
 if __name__ == "__main__":

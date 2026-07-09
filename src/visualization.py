@@ -37,3 +37,31 @@ def plot_home_advantage(home_wins, draws, away_wins):
     plt.savefig("images/home_advantage_pie.png", dpi=300)
 
     plt.show()
+
+
+def plot_top_attendance_matches(top_matches):
+    
+    match_names = (
+        top_matches["HOME_TEAM"] + " vs " + top_matches["AWAY_TEAM"]
+    )
+
+    plt.figure(figsize=(12, 6))
+
+    plt.bar(match_names, top_matches["ATTENDANCE"])
+
+    plt.title("Top 10 Matches by Attendance")
+    plt.xlabel("Matches")
+    plt.ylabel("Attendance")
+
+    plt.xticks(rotation=45, ha="right")
+
+    plt.tight_layout()
+
+    plt.savefig("images/top_10_attendance_matches.png", dpi=300)
+
+    plt.show()
+
+
+
+    
+    
